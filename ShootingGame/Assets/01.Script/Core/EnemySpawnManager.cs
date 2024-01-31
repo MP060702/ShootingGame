@@ -6,6 +6,7 @@ public class EnemySpawnManager :BaseManager
 {
     public GameObject[] Enemys;
     public Transform[] EnemySpawnTransform;
+    public GameObject Meteor;
     public float CoolDownTime;
     public int MaxSpawnEnemyCount;
 
@@ -14,13 +15,14 @@ public class EnemySpawnManager :BaseManager
 
     private bool _bSpawnBoss = false;
 
-    //public GameObject BossA;
+    public GameObject BossA;
 
     public override void Init(GameManager gameManager)
     {
         base.Init(gameManager);
 
         StartCoroutine(SpawnEnemy());
+        StartCoroutine(SpawnMeteor());
     }
 
     IEnumerator SpawnEnemy()
@@ -53,8 +55,28 @@ public class EnemySpawnManager :BaseManager
             if(_spawnCount > BossSpawnCount)
             {
                 _bSpawnBoss = true;
-                //Instantiate(BossA, new Vector3(EnemySpawnTransform[1].position.x, EnemySpawnTransform[1].position.y + 1f, 0), Quaternion.identity);
+                Instantiate(BossA, new Vector3(EnemySpawnTransform[1].position.x, EnemySpawnTransform[1].position.y + 1f, 0), Quaternion.identity);
             }
+        }
+    }
+
+    IEnumerator SpawnMeteor()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(CoolDownTime);
+
+            List<int> availablePosition1 = new List<int>(EnemySpawnTransform.Length);
+            for (int i = 0; i < EnemySpawnTransform.Length; i++)
+            {
+                availablePosition1.Add(i);
+            }
+            int randomPositionIndex1 = Random.Range(0, availablePosition1.Count - 1);
+            int randomPosition1 = availablePosition1[randomPositionIndex1];
+
+            availablePosition1.RemoveAt(randomPositionIndex1);
+
+            Instantiate(Meteor, EnemySpawnTransform[randomPosition1].position, Quaternion.identity);
         }
     }
 }

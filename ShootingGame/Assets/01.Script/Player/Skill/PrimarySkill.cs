@@ -58,21 +58,43 @@ public class PrimarySkill : BaseSkill
     {
         public void Activate(PrimarySkill primaryskill, PlayerCharacter playerCharacter)
         {
+            Vector3 position = playerCharacter.transform.position;
+            position.x += 0.1f;
 
+            for (int i = 0; i < 2; i++)
+            {
+                primaryskill.ShootProjectile(position, Vector3.up);
+                position.x -= 0.2f;
+            }
         }
     }
     public class Level3Weapon : Weapon
     {
         public void Activate(PrimarySkill primaryskill, PlayerCharacter playerCharacter)
         {
+            Vector3 position = playerCharacter.transform.position;
 
+            primaryskill.ShootProjectile(position, Vector3.up);
+            primaryskill.ShootProjectile(position, new Vector3(0.3f, 1, 0));
+            primaryskill.ShootProjectile(position, new Vector3(-0.3f, 1, 0));
         }
     }
     public class Level4Weapon : Weapon
     {
         public void Activate(PrimarySkill primaryskill, PlayerCharacter playerCharacter)
         {
+            Vector3 position = playerCharacter.transform.position;
+            position.x -= 0.1f;
 
+            for (int i= 0; i< 2; i++)
+            {
+                primaryskill.ShootProjectile(position, Vector3.up);
+                position.x += 0.2f;
+            }
+
+            Vector3 position2 = playerCharacter.transform.position;
+            primaryskill.ShootProjectile(position2, new Vector3(0.3f, 1, 0));
+            primaryskill.ShootProjectile(position2, new Vector3(-0.3f, 1, 0));
         }
     }
 
@@ -80,7 +102,15 @@ public class PrimarySkill : BaseSkill
     {
         public void Activate(PrimarySkill primaryskill, PlayerCharacter playerCharacter)
         {
+            Vector3 position =playerCharacter.transform.position;
 
+            for(int i= 0; i < 180; i += 10)
+            {
+                float angle = i * Mathf.Deg2Rad;
+                Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0);
+
+                primaryskill.ShootProjectile(position, direction);
+            }
         }
     }
 }

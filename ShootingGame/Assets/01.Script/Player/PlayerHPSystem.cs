@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHPSystem : MonoBehaviour
 {
     public int Health;
-    public int MaxHealth;
+    public int MaxHealth = 3;
 
     void Start()
     {   
@@ -52,13 +52,13 @@ public class PlayerHPSystem : MonoBehaviour
                 GameManager.Instance.GetPlayerCharacter().DeadProcess();
             }
         }
-        //if (collision.gameObject.CompareTag("Item"))
-        //{
-          //  if(Health > MaxHealth)
-            //{
-              //  Health = MaxHealth;
-            //}
-        //}
+        if (collision.gameObject.CompareTag("Item"))
+        {
+            if(Health > MaxHealth)
+            {
+                Health = MaxHealth;
+            }
+        }
         GameInstance.instance.CurrentPlayerHp = Health;
     }
 }

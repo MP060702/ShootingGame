@@ -29,7 +29,7 @@ public class PlayerCharacter : MonoBehaviour
 
     #region Weapon
     public int CurrentWeaponLevel = 0;
-    public int MaxWeaponLevel = 3;
+    public int MaxWeaponLevel = 4;
     #endregion
 
     /*#region AddOn
@@ -37,6 +37,7 @@ public class PlayerCharacter : MonoBehaviour
     public GameObject AddOnPrefab;
     [HideInInspector] public int MaxAddOnCount = 2;
     #endregion*/
+
 
     public void DeadProcess()
     {
@@ -53,6 +54,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         UpdateMovement();
         UpdateSkillInput();
+
         GameInstance.instance.CurrentPlayerWeoponLevel = CurrentWeaponLevel;
     }
 
@@ -80,12 +82,9 @@ public class PlayerCharacter : MonoBehaviour
 
     private void UpdateSkillInput()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            
-            ActivateSkill(EnumTypes.PlayerSkill.Primary);
-            
-        }
+        if (Input.GetKey(KeyCode.Z)) ActivateSkill(EnumTypes.PlayerSkill.Primary);
+        if (Input.GetKeyDown(KeyCode.X)) ActivateSkill(EnumTypes.PlayerSkill.Repair);
+        if (Input.GetKeyDown(KeyCode.C)) ActivateSkill(EnumTypes.PlayerSkill.Bomb);
     }
 
     private void InitializeSkills()
@@ -126,19 +125,38 @@ public class PlayerCharacter : MonoBehaviour
 
     public void SetInvincibility(bool invin)
     {
-
+        if (invin)
+        {
+            if(invincibilityCorountine != null)
+            {
+                StartCoroutine(InvincibilityCorountine());
+            }
+            invincibilityCorountine = StartCoroutine(InvincibilityCorountine());
+        }
     }
 
-    /*private IEnumerator InvincibilityCorountine()
+    private IEnumerator InvincibilityCorountine()
     {
+        Invincibility = true;
+        SpriteRenderer spriteRenRenderer = GetComponent<SpriteRenderer>();
 
-    }*/
+        float invincibilityDuraction = 3f;
+        spriteRenRenderer.color = new Color(1, 1, 1, 0.5f);
+
+        yield return new WaitForSeconds(invincibilityDuraction);
+
+        Invincibility = false;
+        spriteRenRenderer.color = new Color(1, 1, 1, 1f);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.gameObject.CompareTag("Item"))
+        if (collision.gameObject.CompareTag("Item"))
         {
-
+            BaseItem item = collision.gameObject.GetComponent<BaseItem>();
+            
+            item.OnGetItem(this);
+            Destroy(collision.gameObject);
         }
     }
 }

@@ -21,6 +21,11 @@ public class Enemy : MonoBehaviour
     {
         if (!bIsDead)
         {
+            if (bMustSpawnItem)
+                GameManager.Instance.ItemManager.SpawnRandomItme(0, 3, transform.position);
+            else
+                GameManager.Instance.ItemManager.SpawnRandomItem(transform.position);
+
             bIsDead = true;
             Instantiate(ExplodeFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
