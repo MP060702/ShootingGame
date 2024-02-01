@@ -35,7 +35,9 @@ Transform:
   m_LocalPosition: {x: -0.01, y: -0.16, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9218419175024320614}
+  - {fileID: 1643755699932722166}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4571593970268506061
@@ -193,8 +195,14 @@ MonoBehaviour:
   - {fileID: 3985831279496177498, guid: 3f1e1744f42e94f489354946d421da4e, type: 3}
   - {fileID: 104835643738779135, guid: 778e3be3ec638a54b83d07e1ae47afea, type: 3}
   - {fileID: 6758136326423180321, guid: 48aa25f05a83916479e3ffafd9d5a64c, type: 3}
+  - {fileID: 2827863443159556720, guid: 08287cf204cb7fc489848a4dafe957a3, type: 3}
   CurrentWeaponLevel: 0
   MaxWeaponLevel: 4
+  AddOnTransform:
+  - {fileID: 9218419175024320614}
+  - {fileID: 1643755699932722166}
+  AddOnPrefab: {fileID: 1452940916799886391, guid: 9939cc4f00793d946b9ab651172b3650, type: 3}
+  MaxAddOnCount: 2
 --- !u!114 &2709823980547730040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,3 +243,65 @@ MonoBehaviour:
     Text: {fileID: 0}
   - Skill: 2
     Text: {fileID: 0}
+--- !u!1 &5316922139143637639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9218419175024320614}
+  m_Layer: 0
+  m_Name: AddOnTransform1
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9218419175024320614
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5316922139143637639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.421, y: -0.088, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1316650517886233572}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8660750573707346545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1643755699932722166}
+  m_Layer: 0
+  m_Name: AddOnTransform2
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1643755699932722166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8660750573707346545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.36, y: -0.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1316650517886233572}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

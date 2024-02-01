@@ -16,6 +16,7 @@ public class EnemySpawnManager :BaseManager
     private bool _bSpawnBoss = false;
 
     public GameObject BossA;
+    public GameObject BossB;
 
     public override void Init(GameManager gameManager)
     {
@@ -54,8 +55,18 @@ public class EnemySpawnManager :BaseManager
             
             if(_spawnCount > BossSpawnCount)
             {
-                _bSpawnBoss = true;
-                Instantiate(BossA, new Vector3(EnemySpawnTransform[1].position.x, EnemySpawnTransform[1].position.y + 1f, 0), Quaternion.identity);
+                switch (GameInstance.instance.CurrentStageLevel)
+                {
+                    case 1:
+                        _bSpawnBoss = true;
+                        Instantiate(BossA, new Vector3(EnemySpawnTransform[1].position.x, EnemySpawnTransform[1].position.y + 1f, 0), Quaternion.identity);
+                        break;
+                    case 2:
+                        _bSpawnBoss = true;
+                        Instantiate(BossB, new Vector3(EnemySpawnTransform[1].position.x, EnemySpawnTransform[1].position.y + 1f, 0), Quaternion.identity);
+                        break;
+                }
+   
             }
         }
     }

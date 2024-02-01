@@ -11,10 +11,23 @@ public class Enemy : MonoBehaviour
     public bool bMustSpawnItem = false;
 
     public GameObject ExplodeFX;
-
+    public bool bisFreeze = false;
     void Start()
     {
         
+    }
+
+    void Update()
+    {
+        if(bisFreeze == true)
+        {   
+            Invoke("NotFreeze", 2f);
+        }
+    }
+
+    public void NotFreeze()
+    {
+        bisFreeze = false;
     }
 
     public void Dead()

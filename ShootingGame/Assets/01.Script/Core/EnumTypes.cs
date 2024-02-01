@@ -2,7 +2,7 @@ namespace EnumTypes
 {
     public enum PlayerSkill
     {
-        Primary = 0, Repair, Bomb
+        Primary = 0, Repair, Bomb, Shield, Freeze
     }
 
     public enum ItemName

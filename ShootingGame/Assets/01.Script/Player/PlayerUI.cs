@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +17,7 @@ public class PlayerUI : MonoBehaviour
     public Image[] HealthImages = new Image[3];
     public Image RepairSkill;
     public Image BombSkill;
+    public Image ShieldSkill;
     public Slider FuelSlider;
 
     public TextMeshProUGUI SkillCooldownNoticeText;

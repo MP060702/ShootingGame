@@ -32,11 +32,11 @@ public class PlayerCharacter : MonoBehaviour
     public int MaxWeaponLevel = 4;
     #endregion
 
-    /*#region AddOn
+    #region AddOn
     public Transform[] AddOnTransform;
     public GameObject AddOnPrefab;
     [HideInInspector] public int MaxAddOnCount = 2;
-    #endregion*/
+    #endregion
 
 
     public void DeadProcess()
@@ -54,8 +54,6 @@ public class PlayerCharacter : MonoBehaviour
     {
         UpdateMovement();
         UpdateSkillInput();
-
-        GameInstance.instance.CurrentPlayerWeoponLevel = CurrentWeaponLevel;
     }
 
     public void InitSkillCoolDown()
@@ -85,6 +83,7 @@ public class PlayerCharacter : MonoBehaviour
         if (Input.GetKey(KeyCode.Z)) ActivateSkill(EnumTypes.PlayerSkill.Primary);
         if (Input.GetKeyDown(KeyCode.X)) ActivateSkill(EnumTypes.PlayerSkill.Repair);
         if (Input.GetKeyDown(KeyCode.C)) ActivateSkill(EnumTypes.PlayerSkill.Bomb);
+        if (Input.GetKeyDown(KeyCode.V)) ActivateSkill(EnumTypes.PlayerSkill.Shield);
     }
 
     private void InitializeSkills()
@@ -96,7 +95,7 @@ public class PlayerCharacter : MonoBehaviour
             AddSkill((EnumTypes.PlayerSkill)i, _skillPrefabs[i]);
         }
 
-       
+        GameInstance.instance.CurrentPlayerWeoponLevel = CurrentWeaponLevel;
     }
 
     private void AddSkill(EnumTypes.PlayerSkill skillType, GameObject prefab)

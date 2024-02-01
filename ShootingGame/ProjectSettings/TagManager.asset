@@ -57,3 +57,6 @@ TagManager:
   - name: Item
     uniqueID: 2306846967
     locked: 0
+  - name: Follower
+    uniqueID: 275674067
+    locked: 0

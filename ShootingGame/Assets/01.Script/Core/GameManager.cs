@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {   
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Stage1");
     }
 
+
     public void EnemyDies()
     {
         AddScore(10);
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviour
                 GameInstance.instance.CurrentStageLevel = 2;
                 break;
             case 2:
-                SceneManager.LoadScene("Result");
+                SceneManager.LoadScene("MainMenu");
                 break;
         }
     }

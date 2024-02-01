@@ -121,7 +121,7 @@ public class BossB : MonoBehaviour
 
     private void Pattern2()
     {
-        
+       
     }
 
     private IEnumerator Pattern3()
